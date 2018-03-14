@@ -15,4 +15,5 @@ The files contained here is protected by Apache License 2.0, if you want use the
 | ----- | ---------- | -------------- | --------- |
 | Divulga tudo | 03/12/2014 | HTML, SASS, PHP, Javascript, JQuery | Bootstrap 3.7
 | Timercoin | 09/16/2016 | HTML, SASS, PHP, Javascript, JQuery | AdminLTE
-| Sala de Exercícios| 01/07/2017 | HTML, SASS, PHP, Javascript, JQuery | Bootstrap 4.0
+| Sala de Exercícios | 01/07/2017 | HTML, SASS, PHP, Javascript, JQuery | Bootstrap 4.0
+| Dark Rose Lab| 14/03/2018 | HTML, SASS, PHP, Javascript, JQuery | Material Design

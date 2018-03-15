@@ -1,0 +1,54 @@
+/* GLOBAL */
+.fixMargin{
+	margin-bottom: -0px;
+}
+
+.inputTransparent{
+	border: none;
+	background-color: transparent;
+}
+
+.inputBBorder { /*Border in bottom of a input */
+	border-bottom: 1px solid blue;
+}
+
+.inputBBorder:focus{
+	border-color: purple;
+	box-shadow: 0px 0px 10px 1px purple;
+}
+
+.width100{
+	width: 100%
+}
+
+.width80{
+	width: 80%
+}
+
+iframe{
+	margin: 1%;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+/* END GLOBAL */
+
+/* VISUAL VALIDATIONS */
+/*- Input Error -*/
+.hasError{
+	border: 2px solid red;
+	
+}
+.hasError:focus{
+	border: 1px solid red;
+	box-shadow: 0px 0px 10px 1px red;
+}
+
+/*- Input Success -*/
+.hasSuccess{
+	border: 2px solid green;
+}
+.hasSuccess:focus{
+	border: 1px solid green;
+	box-shadow: 0px 0px 10px 1px green;  
+}
+/* END VISUAL VALIDATIONS */

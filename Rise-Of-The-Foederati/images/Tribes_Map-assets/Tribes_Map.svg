@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1195 939">
+	<image class="highlight" id="Fundo.png" href="images/Tribes_Map-assets/Fundo.png"/>
+	<image id="Mapa.png" href="images/Tribes_Map-assets/Mapa.png"/>
+	<a href="?tribe=Visigoths">
+		<image id="Visigoths.png" x="262" y="596" href="images/Tribes_Map-assets/Visigoths.png"/>
+	</a>
+	<a href="?tribe=Basques">
+		<image id="Basques.png" x="194" y="649" href="images/Tribes_Map-assets/Basques.png"/>
+	</a>
+</svg>

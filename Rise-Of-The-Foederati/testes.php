@@ -1,5 +1,8 @@
 <?php
 ?>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <html>
 <head>
 	<meta charset="utf-8">
@@ -24,34 +27,54 @@
 			if(!isset($_GET['tribe'])){
 		?>
 		<div class="row">
-			<div class="col-md-12" style="height: 80%">
-				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1195 939">
-					<image class="highlight" id="Fundo.png" href="images/Tribes_Map-assets/Fundo.png"/>
-					<image id="Mapa.png" href="images/Tribes_Map-assets/Mapa.png"/>
+			<div class="col-md-12 d-none d-sm-block">
+				<svg width="100%" viewBox="0 0 1195 939" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<image id="Fundo.png" xlink:href="images/Tribes_Map-assets/Fundo.png"/>
+					<image id="Mapa.svg" xlink:href="images/Tribes_Map-assets/Mapa.png"/>
 					<a href="?tribe=Visigoths">
-						<image id="Visigoths.png" x="262" y="596" href="images/Tribes_Map-assets/Visigoths.png"/>
-						
+						<image id="Visigoths.svg" x="262" y="596" xlink:href="images/Tribes_Map-assets/Visigoths.png">
+						<path class="enabled" id="Visigoths" d="M 267.00,607.00
+						   C 267.04,604.22 267.03,595.16 272.01,597.17
+							 276.07,598.80 277.13,604.69 279.51,608.00
+							 284.77,615.32 287.97,614.90 296.00,615.00
+							 304.94,615.12 304.01,617.32 310.00,618.61
+							 317.72,620.28 312.79,616.56 331.00,623.42
+							 333.27,624.28 340.79,626.88 342.03,628.70
+							 343.51,631.12 340.90,633.48 342.03,637.00
+							 343.62,641.39 351.84,647.12 349.40,653.99
+							 347.90,658.20 339.57,663.68 338.15,669.00
+							 337.26,672.33 339.29,674.03 339.65,677.00
+							 340.27,682.12 334.48,689.48 329.00,688.30
+							 322.64,686.93 325.89,684.48 315.00,683.87
+							 308.64,683.52 308.19,679.60 303.00,678.31
+							 303.00,678.31 289.09,677.59 289.09,677.59
+							 285.39,676.62 284.67,674.40 279.00,673.12
+							 276.43,672.54 270.33,671.99 268.43,670.71
+							 260.89,665.64 275.92,649.92 263.00,651.00
+							 263.00,651.00 267.00,607.00 267.00,607.00 Z" />
 					</a>
 					<a href="?tribe=Basques">
-						<image id="Basques.png" x="194" y="649" href="images/Tribes_Map-assets/Basques.png"/>
-						<path class="enabled" id="Basques" d="M 244.17,693.21
-						   C 241.90,695.31 240.25,698.34 237.70,699.43
-							 235.48,700.37 223.23,700.01 220.00,700.00
-							 213.96,699.99 199.52,698.77 196.51,692.81
-							 193.75,687.36 195.96,681.58 195.73,677.00
-							 195.46,671.68 191.65,664.17 197.42,659.98
-							 199.59,658.41 211.26,655.92 214.00,656.31
-							 214.00,656.31 221.00,658.50 221.00,658.50
-							 225.27,659.52 228.09,657.80 232.00,658.50
-							 237.52,659.28 238.17,662.19 247.00,660.85
-							 251.49,660.17 254.55,658.93 257.96,655.87
-							 259.63,654.38 262.67,650.38 264.94,650.34
-							 267.41,650.29 267.77,653.17 267.62,655.01
-							 267.30,659.03 263.36,665.99 266.60,669.42
-							 269.88,672.88 281.29,670.82 283.34,677.09
-							 286.33,686.21 270.33,681.59 267.00,681.00
-							 267.00,681.00 262.00,693.21 262.00,693.21
-							 255.86,689.60 250.07,688.49 244.17,693.21 Z" />
+						<image id="Basques.svg" x="194" y="649" href="images/Tribes_Map-assets/Basques.png"/>
+						<path class="enabled" id="Basques" d="M 285.34,678.96
+						   C 283.21,685.66 273.92,681.01 269.38,684.60
+							 266.78,686.65 265.06,691.76 262.62,692.83
+							 258.87,694.49 257.71,689.24 251.00,691.22
+							 244.11,693.24 242.62,697.70 238.00,699.40
+							 236.23,700.05 233.88,699.99 232.00,700.00
+							 224.52,700.05 210.63,700.80 204.00,698.64
+							 201.69,697.89 197.41,696.38 195.87,694.36
+							 193.70,691.10 195.89,682.89 195.87,679.00
+							 195.57,674.57 192.11,664.43 195.02,660.58
+							 196.93,658.06 204.00,657.31 207.00,656.89
+							 209.64,656.52 212.41,655.30 215.00,655.77
+							 217.61,656.25 219.98,658.32 223.00,658.63
+							 226.28,658.95 228.54,657.07 232.00,657.49
+							 236.13,658.00 238.82,661.36 245.00,660.80
+							 247.95,660.54 252.24,659.27 254.58,657.44
+							 257.52,655.13 260.28,650.75 263.98,649.66
+							 267.38,648.65 268.88,650.89 268.76,654.02
+							 268.56,658.95 266.03,658.78 266.00,670.00
+							 270.60,670.61 287.73,671.47 285.34,678.96 Z" />
 					</a>
 				</svg>
 			</div>
@@ -86,16 +109,10 @@
 			<div class="col-md-3"></div>
 			<div class="col-md-3"></div>
 		</div>
-		<br><br><br><br><br>
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="959px" height="593px" viewBox="none" preserveAspectRatio="xMidYMid meet" xml:space="preserve" >
-	
-
-
-</svg>
 
 <div class="description"></div>
 
-		<?php 
+		<?php
 			} else{
 				require_once("php/tribes/".$_GET['tribe'].".php");
 			}
@@ -113,13 +130,13 @@
 <script>
 	function highlight(){
 		console.log("teste");
-		
+
 	}
-	
+
 	$description = $(".description");
 
   $('.enabled').hover(function() {
-    
+
     $(this).attr("class", "enabled heyo");
     $description.addClass('active');
     $description.html($(this).attr('id'));
@@ -128,12 +145,12 @@
   });
 
 $(document).on('mousemove', function(e){
-  
+
   $description.css({
     left:  e.pageX,
     top:   e.pageY - 70
   });
-  
+
 });
 </script>
 
@@ -162,20 +179,20 @@ svg {
 	border: 1px solid black;
 	border-radius: 5px;
 	background: white;
-	
+
 	padding: 10px;
-	
+
 	pointer-events: none;
 	position: absolute;
 	/*font-size: 18px;*/
 	text-align: center;
-	
+
 
 	/*z-index: 5;*/
 	line-height: 30px;
 	/*margin: 0 auto;*/
 	color: #21669e;
-	
+
 	/*box-shadow: 0 0 0 1px #eee;*/
 	-moz-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);

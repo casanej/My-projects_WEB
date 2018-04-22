@@ -20,40 +20,44 @@
 		<div id="accordion">
 			<div class="card">
 				<a class="scrollClosed btn-block" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Tópico 01</a>
+				<div class="scrollPaperTOP"></div>
 				<div id="collapseOne" class="collapse scrollOpen" aria-labelledby="headingOne" data-parent="#accordion">
 					<div class="card-body">
-					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 					</div>
 				</div>
-				<div class="scrollPaper"></div>
-				<a class="scrollClosed btn-block" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></a>	
+				<div class="scrollPaperBOTTOM"></div>
+				<a class="scrollClosed btn-block" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></a>
 			</div>
 			<br>
 			<div class="card">
 				<a class="scrollClosed btn-block" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Tópico 02</a>
+				<div class="scrollPaperTOP"></div>
 				<div id="collapseTwo" class="collapse scrollOpen" aria-labelledby="headingTwo" data-parent="#accordion">
 					<div class="card-body">
 					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 					</div>
 				</div>
-				<div class="scrollPaper"></div>
-				<a class="scrollClosed btn-block" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"></a>	
+				<div class="scrollPaperBOTTOM"></div>
+				<a class="scrollClosed btn-block" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"></a>
 			</div>
 			<br>
 			<div class="card">
 				<a class="scrollClosed btn-block" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Tópico 03</a>
+				<div class="scrollPaperTOP"></div>
 				<div id="collapseThree" class="collapse scrollOpen" aria-labelledby="headingThree" data-parent="#accordion">
 					<div class="card-body">
 					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 					</div>
 				</div>
-				<div class="scrollPaper"></div>
-				<a class="scrollClosed btn-block" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"></a>	
+				<div class="scrollPaperBOTTOM"></div>
+				<a class="scrollClosed btn-block" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"></a>
 			</div>
 		</div>
 		<br>
 		<div class="card">
 			<a class="scrollClosed btn-block" id="headingHistory" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true" aria-controls="collapseHistory">Full history</a>
+			<div class="scrollPaperTOP"></div>
 			<div id="collapseHistory" class="collapse scrollOpen" aria-labelledby="headingHistory" data-parent="#accordion">
 				<div class="card-body">
 					<h4>Late Ancient history like you've never seen before in a game</h4>
@@ -120,8 +124,8 @@
 					</ul>
 				</div>
 			</div>
-			<div class="scrollPaper"></div>
-			<a class="scrollClosed btn-block" id="headingHistory" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true" aria-controls="collapseHistory"></a>	
+			<div class="scrollPaperBOTTOM"></div>
+			<a class="scrollClosed btn-block" id="headingHistory" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="true" aria-controls="collapseHistory"></a>
 		</div>
 		</div>
 	</div>

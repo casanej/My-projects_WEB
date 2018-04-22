@@ -1,4 +1,28 @@
 /* GLOBAL */
+.default{
+	background-color: black;
+	background-image: url(../images/tribes-background.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+
+	color: white;
+}
+
+.default a{
+	text-decoration: none;
+	color: goldenrod;
+}
+
+.default a:hover{
+	text-decoration: none;
+	color: goldenrod;
+}
+
+.default h1, h2, h4{
+	color: goldenrod;
+}
+
 body{
 	background-color: black;
 }
@@ -27,22 +51,22 @@ nav{
 
 .black-box{
 	background-color: rgba(0,0,0,0.5);
-	
+
 	border: 1px solid goldenrod;
 	border-radius: 10px;
 	padding: 10px;
 }
 /* END GLOBAL */
 
-/* INDEX PAGE*/ 
+/* INDEX PAGE*/
 #index{
 	background-image: url(../images/gallery-background.jpg);
 	background-position: center;
 	background-repeat: no-repeat;
     background-attachment: fixed;
-	
+
 	color: goldenrod;
-	
+
 	text-align: center;
 }
 
@@ -51,13 +75,13 @@ nav{
 }
 
 #jumbotron-banner{
-	height: 500px; 
+	height: 500px;
 	background-image: url(../images/banner-intro.png);
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
-/* END INDEX PAGE*/ 
+/* END INDEX PAGE*/
 
 /* GALLERY PAGE */
 #gallery{
@@ -113,7 +137,7 @@ nav{
 	background-image: url(../images/Scroll.png);
 	background-repeat: no-repeat;
 	background-size: contain;
-	
+
 	padding-top: 150px;
 	padding-left: 50px;
 	padding-right: 50px;
@@ -151,7 +175,7 @@ nav{
 	background-image: url(../images/about-background.jpg);
 	background-position: center;
     background-attachment: fixed;
-	
+
 	color: black;
 	text-align: center;
 }
@@ -166,7 +190,7 @@ nav{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;*/
-	
+
 	padding: 10px;
 }
 
@@ -180,17 +204,16 @@ nav{
 	text-align: justify;
 }
 
-.scrollClosed{	
+.scrollClosed{
 	background-image: url(../images/Scroll_Closed.png) !important;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 100% 100%;
 	height: 50px;
 	padding-top: 1%;
-}
 
-.scrollClosed a{
-	color: white;
+	color: white !important;
+	padding-top: 10px !important;
 }
 
 .scrollOpen{
@@ -199,136 +222,29 @@ nav{
 	background-position: center;
 	background-size: cover;
 
-	width: 80%;
-	margin-left: 10%;
-	margin-top: -1%;
-	margin-bottom: -1%;
+	width: 90%;
+	margin-top: -5px;
+	margin-left: 5%;
+	margin-bottom: -5px;
 	padding-top: 1%;
 }
 
-.scrollPaper{
-	background-image: url(../images/Scroll_Open.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-	width: 80%;
-	margin-left: 10%;
-	margin-top: -1%;
+.scrollPaperTOP{
+	background-color: rgba(222, 180, 108, 100);
+	height: 10px;
+	width: 90%;
+	margin-left: 5%;
+	margin-top: -10px;
 	margin-bottom: -1%;
 	padding-top: 3%;
 }
 
-@media (min-width: 992){
-	.scrollOpen{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -1%;
-		margin-bottom: -1%;
-		padding-top: 1%;
-	}
-
-	.scrollPaper{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -1%;
-		margin-bottom: -1%;
-		padding-top: 3%;
-	}	
-}
-
-@media (min-width: 1025px) {
-  /* Device = Desktops and Laptops */
-	.scrollOpen{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -1%;
-		margin-bottom: -1%;
-		padding-top: 1%;
-	}
-
-	.scrollPaper{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -1%;
-		margin-bottom: -1%;
-		padding-top: 3%;
-	}
-}
-
-@media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
-  .scrollOpen{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -1.5%;
-		margin-bottom: -1.5%;
-		padding-top: 1%;
-	}
-
-	.scrollPaper{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -1.5%;
-		margin-bottom: -1.5%;
-		padding-top: 3%;
-	}
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .scrollOpen{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -2%;
-		margin-bottom: -2%;
-		padding-top: 1%;
-	}
-
-	.scrollPaper{
-		background-image: url(../images/Scroll_Open.jpg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-
-		width: 80%;
-		margin-left: 10%;
-		margin-top: -2%;
-		margin-bottom: -2%;
-		padding-top: 3%;
-	}
+.scrollPaperBOTTOM{
+	background-color: rgba(222, 180, 108, 100);
+	height: 10px;
+	width: 90%;
+	margin-left: 5%;
+	margin-bottom: -10px;
+	padding-top: 3%;
 }
 /* END HISTORY PAGE */

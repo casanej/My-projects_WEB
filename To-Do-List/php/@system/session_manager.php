@@ -57,6 +57,14 @@ class SessionManager extends Framework{
 
         return $return;
     }
+
+    function sessionSetVariable($index, $index2=''){
+        if($index2 == ''){
+            $_SESSION[$index1];
+        } else{
+            $_SESSION[$index1][$index2];
+        }
+    }
 }
 
 $isUserLogged = SessionManager::sessionUserLogin();

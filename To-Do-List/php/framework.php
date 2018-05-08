@@ -39,5 +39,25 @@ class Framework{
         echo $output;
     }
 /* END JAVASCRIPT FUNCTION */
+
+/* --- PHP FUNCTION ---*/
+public function verifyError(string $error){
+    switch($error){
+        case 1:
+            //SQL ERROR -> true: query succefull
+            $msg = "Query executed with succefull.";
+            break;
+        case 23000;
+            //SQL ERROR -> 1062: duplicated row
+            $msg = "Have a duplicate row on the query";
+            break;
+        default:
+            $msg = "Have no error on the system";
+            break;
+    }
+
+    return $msg;
+}
+/* --- END PHP FUNCTION */
 }
 ?>

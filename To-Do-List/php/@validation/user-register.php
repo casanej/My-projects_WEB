@@ -18,4 +18,7 @@ $password = $_POST['registerPassword'];
 $fullName = sprintf("%s %s", $name, $surname);
 
 $query = $fwuserMgmt->callRegisterUser($fullName, $email, $password);
+
+
+printf("Error -> %s", $fwFramework->verifyError($query));
 ?>

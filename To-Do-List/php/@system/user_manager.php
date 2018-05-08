@@ -2,28 +2,34 @@
 class UserManagement extends Connect{
     private function registerUser($name, $email, $password){
         $uuid = $this->createUUID();
-        $password = $this->encryptPass();
+        $password = $this->encryptPass($password);
         $datecreate = date('Y-m-d H:i:s');
         $datechange = $datecreate;
         $adressip = $this->getIp();
         $lastchange = $datecreate;
 
-        $conn = $this->Connect = $this->createConnection(1);
+        try {
+            $conn = $this->Connect = $this->createConnection(1);
 
-        $stmt = $conn->prepare("INSERT INTO tblogins (uuid, name, email, password, datecreate, datechange, addressip, lastchange) VALUES (:UUID, :NAME, :EMAIL, :PASSWORD, :DATECREATE, :DATECHANGE, :ADDRESSIP, :LASTCHANGE)");
-        $stmt->bindParam(":UUID", $uuid);
-        $stmt->bindParam(":NAME", $name);
-        $stmt->bindParam(":EMAIL", $email);
-        $stmt->bindParam(":PASSWORD", $password);
-        $stmt->bindParam(":DATECREATE", $datecreate);
-        $stmt->bindParam(":DATECHANGE", $datechange);
-        $stmt->bindParam(":ADDRESSIP", $adressip);
-        $stmt->bindParam(":LASTCHANGE", $lastchange);
+            $stmt = $conn->prepare("INSERT INTO tblogins (uuid, name, email, password, datecreate, datechange, addressip, lastchange) VALUES (:UUID, :NAME, :EMAIL, :PASSWORD, :DATECREATE, :DATECHANGE, :ADDRESSIP, :LASTCHANGE)");
+            $stmt->bindParam(":UUID", $uuid);
+            $stmt->bindParam(":NAME", $name);
+            $stmt->bindParam(":EMAIL", $email);
+            $stmt->bindParam(":PASSWORD", $password);
+            $stmt->bindParam(":DATECREATE", $datecreate);
+            $stmt->bindParam(":DATECHANGE", $datechange);
+            $stmt->bindParam(":ADDRESSIP", $adressip);
+            $stmt->bindParam(":LASTCHANGE", $lastchange);
 
-        var_dump($stmt);
+            $stmt->execute();
 
-        $stmt->execute();
-        return $stmt;
+            $return = true;
+        }
+        catch(PDOException $e) {
+            $return = $e->getCode();
+        }
+
+        return $return;
     }
 
     public function callRegisterUser(string $name, string $email, string $password){
@@ -56,13 +62,28 @@ class UserManagement extends Connect{
         return $ip;
     }
 
-    private encryptPass($password){
+    private function encryptPass($password){
         $options = [
             'cost' => 10,
         ];
-        
+
         $pass = password_hash($password, PASSWORD_ARGON2I, $options);
+        $pass = substr($pass, 28);
+
         return $pass;
+    }
+
+    private function decryptPass($password, $hash){
+        $return;
+        $hash = '$argon2i$v=19$m=1024,t=2,p=2'.$hash;
+
+        if (password_verify($password, $hash)) {
+            $return = true;
+        } else {
+            $return = false;
+        }
+
+        return $return;
     }
 }
 ?>

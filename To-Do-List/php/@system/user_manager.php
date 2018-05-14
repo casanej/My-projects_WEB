@@ -94,14 +94,20 @@ class user_manager{
 
             $this->setData($results[0]);
         } else{
+<<<<<<< HEAD
             $return = $this->data = "Erro;Email address already taken! Please chose another";
         }
 
         return $return;
+=======
+            throw new Exception("Login e/ou senha inválidos");
+        }
+>>>>>>> f73fa81b423ab3338d3790c89b998d2efbfec3a2
     }
     /* END LOGIN */
 
     /* REGISTER */
+<<<<<<< HEAD
     public function doRegister(string $name, string $email, string $password){
         $return = "";
         $checkEmail = $this->checkEmail($email);
@@ -123,6 +129,35 @@ class user_manager{
             ));
         } else{
             $return = $this->data = "Erro;Email address already taken! Please chose another";
+=======
+    public function doRegister($name, $email, $password){
+        $sql = new system_sql();
+
+        $uuid  = $this->createUUID();
+        $name = rawurlencode($name);
+        $password = $this->encryptPass($password);
+        $ip = $this->getIp();
+
+        $results = $sql->select("INSERT INTO tblogins (uuid, name, email, password, addressip) VALUES (:UUID, :NAME, :EMAIL, :PASS, :ADDRESS)", array(
+            ":UUID"=>$uuid,
+            ":NAME"=>$name,
+            ":EMAIL"=>$email,
+            ":PASS"=>$password,
+            ":ADDRESS"=>$ip
+        ));
+
+        if(count($results) > 0){
+            $this->transaction = true;
+
+            $row = $results[0];
+
+            $this->setUuid($row['uuid']);
+            $this->setName($row['name']);
+            $this->setEmail($row['email']);
+            $this->setAddressIp($row['addressip']);
+        } else{
+            throw new Exception("Login e/ou senha inválidos");
+>>>>>>> f73fa81b423ab3338d3790c89b998d2efbfec3a2
         }
 
         return $return;
@@ -130,18 +165,26 @@ class user_manager{
     /* END REGISTER */
 
     /* REGISTER FUNCTIONS */
+<<<<<<< HEAD
     private function checkEmail($email){
+=======
+    private function checkEmail(string $email){
+>>>>>>> f73fa81b423ab3338d3790c89b998d2efbfec3a2
         $sql = new system_sql();
 
         $results = $sql->select("SELECT email FROM tblogins WHERE email=:EMAIL", array(
             ":EMAIL"=>$email
         ));
 
+<<<<<<< HEAD
         if(count($results) > 0){
             $return = false;
         } else{
             $return = true;
         }
+=======
+        if(count($results) > 0) $return = false; else $return = true;
+>>>>>>> f73fa81b423ab3338d3790c89b998d2efbfec3a2
 
         return $return;
     }

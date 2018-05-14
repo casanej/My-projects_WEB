@@ -1,13 +1,10 @@
 <?php
 require_once("php/framework.php");
-require_once("php/@system/session_manager.php");
 
-$fwFramework = new Framework();
-$fwSessionManager = new SessionManager();
+$startSession = SessionManager::startSession();
+$headInit = Framework::headInit();
+$scriptsLoad = Framework::scriptsLoad();
 
-$startSession = $fwSessionManager->startSession();
-$headInit = $fwFramework->headInit();
-$scriptsLoad = $fwFramework->scriptsLoad();
 ?>
 <!doctype html>
 <html lang="en">

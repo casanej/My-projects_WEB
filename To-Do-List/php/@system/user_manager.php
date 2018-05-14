@@ -1,56 +1,111 @@
-<?php
-class UserManagement extends Connect{
-    private function registerUser($name, $email, $password){
-        $uuid = $this->createUUID();
-        $password = $this->encryptPass($password);
-        $datecreate = date('Y-m-d H:i:s');
-        $datechange = $datecreate;
-        $adressip = $this->getIp();
-        $lastchange = $datecreate;
+ <?php
+class user_manager{
+    private $transaction;
 
-        try {
-            $conn = $this->Connect = $this->createConnection(1);
+    private $uuid;
+    private $name;
+    private $email;
+    private $addressip;
 
-            $stmt = $conn->prepare("INSERT INTO tblogins (uuid, name, email, password, datecreate, datechange, addressip, lastchange) VALUES (:UUID, :NAME, :EMAIL, :PASSWORD, :DATECREATE, :DATECHANGE, :ADDRESSIP, :LASTCHANGE)");
-            $stmt->bindParam(":UUID", $uuid);
-            $stmt->bindParam(":NAME", $name);
-            $stmt->bindParam(":EMAIL", $email);
-            $stmt->bindParam(":PASSWORD", $password);
-            $stmt->bindParam(":DATECREATE", $datecreate);
-            $stmt->bindParam(":DATECHANGE", $datechange);
-            $stmt->bindParam(":ADDRESSIP", $adressip);
-            $stmt->bindParam(":LASTCHANGE", $lastchange);
-
-            $stmt->execute();
-
-            $return = true;
-        }
-        catch(PDOException $e) {
-            $return = $e->getCode();
+    public function __toString(){
+        if($this->transaction){
+            $data = json_encode(array(
+                    "uuid"=>$this->getUuid(),
+                    "name"=>$this->getName(),
+                    "email"=>$this->getEmail(),
+                    "addressip"=>$this->getAddressIp()
+                ));
+        } else {
+            $data = "false";
         }
 
-        return $return;
+        return $data;
     }
 
-    public function callRegisterUser(string $name, string $email, string $password){
-        $return;
-        if(!empty($name) || !empty($email) || !empty($password)){
-            $return = $this->registerUser($name, $email, $password);
+    private function getUuid(){
+        return $this->uuid;
+    }
+    private function getName(){
+        return $this->name;
+    }
+    private function getEmail(){
+        return $this->email;
+    }
+    private function getAddressIp(){
+        return $this->addressip;
+    }
+
+    private function setUuid($value){
+        $this->uuid = $value;
+    }
+    private function setName($value){
+        $this->name = $value;
+    }
+    private function setEmail($value){
+        $this->email = $value;
+    }
+    private function setAddressIp($value){
+        $this->addressip = $value;
+    }
+
+    public function loadById($id){
+        $sql = new system_sql();
+
+        $results = $sql->select("SELECT uuid, name, email, addressip FROM tblogins WHERE numid=:NUMID", array(
+            ":NUMID"=>$id
+        ));
+
+        if(count($results) > 0){
+            $this->transaction = true;
+
+            $row = $results[0];
+
+            $this->setUuid($row['uuid']);
+            $this->setName($row['name']);
+            $this->setEmail($row['email']);
+            $this->setAddressIp($row['addressip']);
         } else{
-            $return = "Name, email or password is empty";
+            $this->transaction = false;
         }
-
-        return $return;
     }
 
+    public static function loadByAll(){
+        $sql = new system_sql();
+
+        return $sql->select("SELECT uuid, name, email, addressip FROM tblogins ORDER BY numid;");
+    }
+
+    /* LOGIN */
+    public function doLogin(string $login, string $password){
+        $sql = new system_sql();
+
+        $results = $sql->select("SELECT uuid, name, email, addressip FROM tblogins WHERE email=:LOGIN AND password=:PASSWORD", array(
+            ":LOGIN"=>$login,
+            ":PASSWORD"=>$password
+        ));
+
+        if(count($results) > 0){
+            $this->transaction = true;
+
+            $row = $results[0];
+
+            $this->setUuid($row['uuid']);
+            $this->setName($row['name']);
+            $this->setEmail($row['email']);
+            $this->setAddressIp($row['addressip']);
+        } else{
+            throw new Exception("Login e/ou senha inválidos");
+        } 
+    }
+    /* END LOGIN */
 
     /* REGISTER FUNCTIONS */
-    private function createUUID(){
+    private function createUUID():string {
         $uuid = md5(uniqid(rand(), true));
         return $uuid;
     }
 
-    private function getIp(){
+    private function getIp():string {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -62,7 +117,7 @@ class UserManagement extends Connect{
         return $ip;
     }
 
-    private function encryptPass($password){
+    private function encryptPass(string $password):string {
         $options = [
             'cost' => 10,
         ];
@@ -73,6 +128,7 @@ class UserManagement extends Connect{
         return $pass;
     }
 
+    /* LOGIN FUNCTION */
     private function decryptPass($password, $hash){
         $return;
         $hash = '$argon2i$v=19$m=1024,t=2,p=2'.$hash;

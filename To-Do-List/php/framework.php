@@ -1,4 +1,21 @@
 <?php
+spl_autoload_register(function($class_name){
+    $filename = sprintf("php/@system/%s.php", $class_name);
+    if(file_exists($filename)){
+        require_once($filename);
+    }
+});
+
+$actualPath = "";
+
+for($i="";$i!="../../../../../";$i.="../"){
+    if(file_exists($i."php/@system/session_manager.php")){
+        require_once($i."php/@system/session_manager.php");
+        break;
+    }
+}
+
+
 class Framework{
 /* --- CSS FUNCTION -- */
     function headInit($type=null, $path=''){
@@ -50,6 +67,9 @@ public function verifyError(string $error){
         case 23000;
             //SQL ERROR -> 1062: duplicated row
             $msg = "Have a duplicate row on the query";
+            break;
+        case "42S01":
+            $msg = "The table already exist.";
             break;
         default:
             $msg = "Have no error on the system";

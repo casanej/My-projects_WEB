@@ -35,6 +35,13 @@ class user_manager{
         return $this->addressip;
     }
 
+    private function setData($data){
+        $this->setUuid($data['uuid']);
+        $this->setName($data['name']);
+        $this->setEmail($data['email']);
+        $this->setAddressIp($data['addressip']);
+    }
+
     private function setUuid($value){
         $this->uuid = $value;
     }
@@ -58,18 +65,14 @@ class user_manager{
         if(count($results) > 0){
             $this->transaction = true;
 
-            $row = $results[0];
-
-            $this->setUuid($row['uuid']);
-            $this->setName($row['name']);
-            $this->setEmail($row['email']);
-            $this->setAddressIp($row['addressip']);
+            $this->setData($results[0]);
         } else{
             $this->transaction = false;
         }
     }
 
     public static function loadByAll(){
+        $return = "";
         $sql = new system_sql();
 
         return $sql->select("SELECT uuid, name, email, addressip FROM tblogins ORDER BY numid;");
@@ -89,17 +92,60 @@ class user_manager{
 
             $row = $results[0];
 
-            $this->setUuid($row['uuid']);
-            $this->setName($row['name']);
-            $this->setEmail($row['email']);
-            $this->setAddressIp($row['addressip']);
+            $this->setData($results[0]);
         } else{
-            throw new Exception("Login e/ou senha inválidos");
-        } 
+            $return = $this->data = "Erro;Email address already taken! Please chose another";
+        }
+
+        return $return;
     }
     /* END LOGIN */
 
+    /* REGISTER */
+    public function doRegister(string $name, string $email, string $password){
+        $return = "";
+        $checkEmail = $this->checkEmail($email);
+
+        if($checkEmail){
+            $sql = new system_sql();
+
+            $uuid = $this->createUUID();
+            $name = rawurlencode($name);
+            $password = $this->encryptPass($password);
+            $ip = $this->getIp();
+
+            $results = $sql->insert("INSERT INTO tblogins (uuid, name, email, password, addressip) VALUES (:UUID, :NAME, :EMAIL, :PASSWORD, :IP)", array(
+                ":UUID"=>$uuid,
+                ":NAME"=>$name,
+                ":EMAIL"=>$email,
+                ":PASSWORD"=>$password,
+                ":IP"=>$ip
+            ));
+        } else{
+            $return = $this->data = "Erro;Email address already taken! Please chose another";
+        }
+
+        return $return;
+    }
+    /* END REGISTER */
+
     /* REGISTER FUNCTIONS */
+    private function checkEmail($email){
+        $sql = new system_sql();
+
+        $results = $sql->select("SELECT email FROM tblogins WHERE email=:EMAIL", array(
+            ":EMAIL"=>$email
+        ));
+
+        if(count($results) > 0){
+            $return = false;
+        } else{
+            $return = true;
+        }
+
+        return $return;
+    }
+
     private function createUUID():string {
         $uuid = md5(uniqid(rand(), true));
         return $uuid;

@@ -28,7 +28,7 @@ Class system_sql{
     }
 
     public function query($rawQuery, $params=array()){
-    	$stmt= $this->conn->prepare($rawQuery);
+    	$stmt = $this->conn->prepare($rawQuery);
 
     	$this->setParams($stmt, $params);
 
@@ -43,6 +43,12 @@ Class system_sql{
 
     	return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+	public function insert(string $rawQuery, array $params=array()){
+		$stmt = $this->query($rawQuery, $params);
+
+		return $stmt;
+	}
 
 
     /* DATA PROCESSING ------------------------------------------------------------------------------------- */

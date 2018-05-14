@@ -27,6 +27,75 @@ Class system_sql{
         }
     }
 
+	public function createTablePrefab($typeTable){
+        /* TABLE TYPES NAMES
+            00 - Logs
+            01 - Logins
+        */
+
+        $return = "";
+        $table = "";
+
+        switch($typeTable){
+            case 0:
+                $table = "CREATE TABLE `tblogs` (
+                            `index` INT(11) NOT NULL,
+                            `error` VARCHAR(64) NOT NULL,
+                            `page` VARCHAR(64) NOT NULL,
+                            `description` VARCHAR(256) NOT NULL,
+                            `status` VARCHAR(32) NOT NULL,
+                            `foundby` VARCHAR(64) NOT NULL,
+                            `datecreate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            `datechange` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                            `addressip` VARCHAR(16) NOT NULL
+                        )
+                        ENGINE=InnoDB
+                        ;";
+                break;
+            case 1:
+                $table = "CREATE TABLE `tblogins` (
+                        `number` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                        `uuid` VARCHAR(32) NOT NULL,
+                        `name` VARCHAR(128) NOT NULL,
+                        `email` VARCHAR(64) NOT NULL,
+                        `password` VARCHAR(64) NOT NULL,
+                        `datecreate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                        `datechange` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                        `addressip` VARCHAR(16) NOT NULL,
+                        PRIMARY KEY (`uuid`),
+                        UNIQUE INDEX `uuid` (`uuid`),
+                        UNIQUE INDEX `email` (`email`),
+                        INDEX `number` (`number`)
+                    )
+                    COMMENT='Table contains users logins'
+                    COLLATE='latin1_swedish_ci'
+                    ENGINE=InnoDB;";
+                break;
+            default:
+                $return = "Error: Table prefab non exist.";
+                break;
+        }
+
+        try {
+            if($table != ""){
+                $stmt = $this->conn->prepare($table);
+                $stmt->execute();
+
+                $stmt = null;
+                $conn = null;
+
+                $return = true;
+            } else{
+                $return .= " Table query not executed.";
+            }
+        }
+        catch(PDOException $e) {
+            $return = $e->getCode();
+        }
+
+        return $return;
+    }
+
     public function query($rawQuery, $params=array()){
     	$stmt= $this->conn->prepare($rawQuery);
 
@@ -44,6 +113,10 @@ Class system_sql{
     	return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+	public function insert(){
+		$sql = new system_sql();
+
+	}
 
     /* DATA PROCESSING ------------------------------------------------------------------------------------- */
     private function setParams($statement, $parameters=array()){

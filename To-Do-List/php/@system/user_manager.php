@@ -95,11 +95,57 @@ class user_manager{
             $this->setAddressIp($row['addressip']);
         } else{
             throw new Exception("Login e/ou senha inválidos");
-        } 
+        }
     }
     /* END LOGIN */
 
+    /* REGISTER */
+    public function doRegister($name, $email, $password){
+        $sql = new system_sql();
+
+        $uuid  = $this->createUUID();
+        $name = rawurlencode($name);
+        $password = $this->encryptPass($password);
+        $ip = $this->getIp();
+
+        $results = $sql->select("INSERT INTO tblogins (uuid, name, email, password, addressip) VALUES (:UUID, :NAME, :EMAIL, :PASS, :ADDRESS)", array(
+            ":UUID"=>$uuid,
+            ":NAME"=>$name,
+            ":EMAIL"=>$email,
+            ":PASS"=>$password,
+            ":ADDRESS"=>$ip
+        ));
+
+        if(count($results) > 0){
+            $this->transaction = true;
+
+            $row = $results[0];
+
+            $this->setUuid($row['uuid']);
+            $this->setName($row['name']);
+            $this->setEmail($row['email']);
+            $this->setAddressIp($row['addressip']);
+        } else{
+            throw new Exception("Login e/ou senha inválidos");
+        }
+
+        return $return;
+    }
+    /* END REGISTER */
+
     /* REGISTER FUNCTIONS */
+    private function checkEmail(string $email){
+        $sql = new system_sql();
+
+        $results = $sql->select("SELECT email FROM tblogins WHERE email=:EMAIL", array(
+            ":EMAIL"=>$email
+        ));
+
+        if(count($results) > 0) $return = false; else $return = true;
+
+        return $return;
+    }
+
     private function createUUID():string {
         $uuid = md5(uniqid(rand(), true));
         return $uuid;
